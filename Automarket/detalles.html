@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket - Detalles del Vehículo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">AutoMarket</a>
+            <a href="index.html" class="btn btn-secondary">Volver al Catálogo</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="details-wrapper">
+            <img id="detailImg" src="" alt="Vehículo" class="details-img">
+            
+            <div class="details-content">
+                <h2 id="detailTitle">Cargando...</h2>
+                <p><strong>Categoría:</strong> <span id="detailCategory"></span></p>
+                <p><strong>Estado:</strong> <span id="detailStatus"></span></p>
+                <p><strong>Precio:</strong> <span id="detailPrice" class="card-price"></span></p>
+                
+                <div class="contact-box">
+                    <p><strong>Contacto con el Propietario / Concesionario:</strong></p>
+                    <p id="detailContact" style="font-size: 1.2rem; font-weight: bold; color: var(--primary-color);"></p>
+                </div>
+
+                <div class="card-actions" style="margin-top: 1.5rem;">
+                    <a id="btnEditDetail" href="editar.html" class="btn btn-warning">Editar este vehículo</a>
+                    <a href="index.html" class="btn btn-secondary">Regresar al Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
