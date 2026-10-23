@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket - Catálogo Principal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">AutoMarket</h1>
+            <a href="publicar.html" class="btn btn-primary">Publicar Vehículo</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre o tipo..." aria-label="Buscar vehículo">
+            </div>
+            <select id="categoryFilter" aria-label="Filtrar por tipo">
+                <option value="">Todos los tipos</option>
+            </select>
+            <select id="statusFilter" aria-label="Filtrar por estado">
+                <option value="">Todos los estados</option>
+            </select>
+        </section>
+
+        <section class="catalog-header">
+            <h2>Catálogo de Vehículos Disponibles</h2>
+        </section>
+
+        <section id="vehicleCatalog" class="catalog-grid"></section>
+    </main>
+
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>¿Está seguro de que desea eliminar este vehículo?</h3>
+            <p id="deleteTargetText">Nombre del vehículo</p>
+            <div class="modal-actions">
+                <button id="btnCancelDelete" class="btn btn-secondary">Cancelar</button>
+                <button id="btnConfirmDelete" class="btn btn-danger">Sí, Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orden: utilidades -> modelo -> vista -> controlador -->
+    <script src="js/utils/formato.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="js/models/almacenamientoLocal.js"></script>
+    <script src="js/models/vehiculoModelo.js"></script>
+    <script src="js/views/catalogoVista.js"></script>
+    <script src="js/controllers/catalogoControlador.js"></script>
+</body>
+</html>

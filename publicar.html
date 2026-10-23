@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket - Publicar Vehículo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">AutoMarket</a>
+            <a href="index.html" class="btn btn-secondary">Volver al Catálogo</a>
+        </div>
+    </header>
+
+    <main class="form-page-container">
+        <h2>Registrar Nuevo Vehículo</h2>
+
+        <form id="publishForm" novalidate>
+            <div class="form-group">
+                <label for="vehicleTitle">Título del vehículo:</label>
+                <input type="text" id="vehicleTitle" placeholder="Ej: Mazda 3 Grand Touring">
+                <span id="titleError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleCategory">Categoría:</label>
+                <select id="vehicleCategory">
+                    <option value="">Seleccione una categoría</option>
+                </select>
+                <span id="categoryError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="vehiclePrice">Precio ($):</label>
+                <input type="number" id="vehiclePrice" placeholder="Ej: 45000000">
+                <span id="priceError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleStatus">Estado:</label>
+                <select id="vehicleStatus">
+                    <option value="">Seleccione estado</option>
+                </select>
+                <span id="statusError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleContact">Número de Contacto:</label>
+                <input type="tel" id="vehicleContact" placeholder="Ej: 3101234567">
+                <span id="contactError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleImage">Foto del vehículo:</label>
+                <input type="file" id="vehicleImage" accept="image/*">
+                <img id="imagePreview" class="image-preview hidden" alt="Vista previa de la foto">
+                <span id="imageError" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label id="optionsLabel">Opciones:</label>
+                <div id="vehicleOptions" class="option-group" role="group" aria-labelledby="optionsLabel">
+                    <label><input type="checkbox" name="options" value="1"> 1</label>
+                    <label><input type="checkbox" name="options" value="2"> 2</label>
+                    <label><input type="checkbox" name="options" value="3"> 3</label>
+                    <label><input type="checkbox" name="options" value="4"> 4</label>
+                    <label><input type="checkbox" name="options" value="5"> 5</label>
+                </div>
+                <span id="optionsError" class="error-message"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Publicar Vehículo</button>
+                <a href="index.html" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- Orden: utilidades -> modelo -> vista -> controlador -->
+    <script src="js/utils/formato.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="js/utils/navegacion.js"></script>
+    <script src="js/utils/imagenes.js"></script>
+    <script src="js/models/almacenamientoLocal.js"></script>
+    <script src="js/models/vehiculoModelo.js"></script>
+    <script src="js/models/validacion.js"></script>
+    <script src="js/views/formularioVista.js"></script>
+    <script src="js/controllers/formularioControlador.js"></script>
+    <script src="js/controllers/publicarControlador.js"></script>
+</body>
+</html>
