@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoMarket - Editar Vehículo</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header class="navbar">
@@ -16,48 +19,45 @@
 
     <main class="form-page-container">
         <h2>Editar Publicación</h2>
-        
+
         <form id="editForm" novalidate>
             <div class="form-group">
                 <label for="vehicleTitle">Título del vehículo:</label>
-                <input type="text" id="vehicleTitle" value="Chevrolet Tracker 2026">
+                <input type="text" id="vehicleTitle">
                 <span id="titleError" class="error-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="vehicleCategory">Categoría:</label>
                 <select id="vehicleCategory">
-                    <option value="Camioneta" selected>Camioneta</option>
-                    <option value="Sedán">Sedán</option>
-                    <option value="Hatchback">Hatchback</option>
                 </select>
                 <span id="categoryError" class="error-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="vehiclePrice">Precio ($):</label>
-                <input type="number" id="vehiclePrice" value="95000000">
+                <input type="number" id="vehiclePrice">
                 <span id="priceError" class="error-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="vehicleStatus">Estado:</label>
                 <select id="vehicleStatus">
-                    <option value="Nuevo" selected>Nuevo</option>
-                    <option value="Usado">Usado</option>
                 </select>
                 <span id="statusError" class="error-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="vehicleContact">Número de Contacto:</label>
-                <input type="tel" id="vehicleContact" value="3009876543">
+                <input type="tel" id="vehicleContact">
                 <span id="contactError" class="error-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="vehicleImage">Actualizar Foto:</label>
                 <input type="file" id="vehicleImage" accept="image/*">
+                <img id="imagePreview" class="image-preview hidden" alt="Vista previa de la foto">
+                <span id="imageError" class="error-message"></span>
             </div>
 
             <div class="form-actions">
@@ -67,6 +67,16 @@
         </form>
     </main>
 
-    <script src="app.js"></script>
+    <!-- Orden: utilidades -> modelo -> vista -> controlador -->
+    <script src="js/utils/formato.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="js/utils/navegacion.js"></script>
+    <script src="js/utils/imagenes.js"></script>
+    <script src="js/models/almacenamientoLocal.js"></script>
+    <script src="js/models/vehiculoModelo.js"></script>
+    <script src="js/models/validacion.js"></script>
+    <script src="js/views/formularioVista.js"></script>
+    <script src="js/controllers/formularioControlador.js"></script>
+    <script src="js/controllers/editarControlador.js"></script>
 </body>
 </html>

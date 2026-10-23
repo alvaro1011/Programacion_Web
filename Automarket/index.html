@@ -1,119 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMarket - Tu Marketplace de Vehículos</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>AutoMarket - Catálogo Principal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
+
     <header class="navbar">
         <div class="navbar-container">
-            <h1 class="Logo">AutoMarket</h1>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar Automóvil...">
-            </div>
-            <button id="btnOpenRegister" class="btn btn-primary">Publicar</button>
+            <h1 class="logo">AutoMarket</h1>
+            <a href="publicar.html" class="btn btn-primary">Publicar Vehículo</a>
         </div>
     </header>
+
     <main class="container">
+        <section class="filters-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre o tipo..." aria-label="Buscar vehículo">
+            </div>
+            <select id="categoryFilter" aria-label="Filtrar por tipo">
+                <option value="">Todos los tipos</option>
+            </select>
+            <select id="statusFilter" aria-label="Filtrar por estado">
+                <option value="">Todos los estados</option>
+            </select>
+        </section>
+
         <section class="catalog-header">
-            <h2>Catálogo de Vehículos</h2>
+            <h2>Catálogo de Vehículos Disponibles</h2>
         </section>
-        <section id="vehicleCatalog" class="catalog-grid">
-            <article class="card">
-                <div class="card-img-container">
-                    <img src="https://imgs.search.brave.com/acYWSDqI1ldAJLbxgrXew_2nYeh3s96nMZv-ya2IGNI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nbWF1/dGhvcml0eS5jb20v/YmxvZy93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNS8xMS8yMDI2/LUNoZXZyb2xldC1U/cmFja2VyLVByZW1p/ZXItTWV4aWNvLVBy/ZXNzLVBob3Rvcy1F/eHRlcmlvci0wMDEt/RnJvbnQtVGhyZWUt/UXVhcnRlcnMtODUw/eDQ3OC5qcGc" alt="Chevrolet Tracker"
-                        class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Chevrolet Tracker 2026</h3>
-                    <p class="card-info"><strong>Categoría:</strong> Camioneta</p>
-                    <p class="card-info"><strong>Estado:</strong> Nuevo</p>
-                    <p class="card-price">$92.000.000</p>
-                    <div class="card-actions">
-                        <button class="btn btn-warning btn-edit">Editar</button>
-                        <button class="btn btn-danger btn-delete">Eliminar</button>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img-container">
-                    <img src="https://imgs.search.brave.com/Us1lMBxuFuK4_hzRr7hQykAaaJN59ANcYYcxaq7LECA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9OUV9OUF82/OTU2NjItTUNPNTA0/NDA4OTgwODVfMDYy/MDIyLVcud2VicA" alt="Aveo Emotion"
-                        class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Aveo Emotion</h3>
-                    <p class="card-info"><strong>Categoría:</strong> Sedán</p>
-                    <p class="card-info"><strong>Estado:</strong> Usado</p>
-                    <p class="card-price">$27.000.000</p>
-                    <div class="card-actions">
-                        <button class="btn btn-warning btn-edit">Editar</button>
-                        <button class="btn btn-danger btn-delete">Eliminar</button>
-                    </div>
-                </div>
-            </article>
-        </section>
+
+        <section id="vehicleCatalog" class="catalog-grid"></section>
     </main>
-<div id="formModal" class="modal-overlay hidden">
-    <div class="modal-content">
-        <button id="btnCloseFormModal" class="close-btn">&times;</button>
-        <h2 id="modalTitle">Registro Vehículo</h2>
 
-        <form id="vehicleForm" novalidate>
-            <div class="form-group">
-                <label for="vehicleTitle">Título del vehículo:</label>
-                <input type="text" id="vehicleTitle" placeholder="Ej: Chevrolet Tracker 2026">
-                <span id="titleError" class="error-message"></span>
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>¿Está seguro de que desea eliminar este vehículo?</h3>
+            <p id="deleteTargetText">Nombre del vehículo</p>
+            <div class="modal-actions">
+                <button id="btnCancelDelete" class="btn btn-secondary">Cancelar</button>
+                <button id="btnConfirmDelete" class="btn btn-danger">Sí, Eliminar</button>
             </div>
-
-            <div class="form-group">
-                <label for="vehicleCategory">Categoría:</label>
-                <select id="vehicleCategory">
-                    <option value="">Seleccione una categoría</option>
-                    <option value="Camioneta">Camioneta</option>
-                    <option value="Sedán">Sedán</option>
-                    <option value="Hatchback">Hatchback</option>
-                </select>
-                <span id="categoryError" class="error-message"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="vehiclePrice">Precio ($):</label>
-                <input type="number" id="vehiclePrice" placeholder="Ej: 32500000">
-                <span id="priceError" class="error-message"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="vehicleStatus">Estado:</label>
-                <select id="vehicleStatus">
-                    <option value="">Seleccione estado</option>
-                    <option value="Nuevo">Nuevo</option>
-                    <option value="Usado">Usado / Segunda mano</option>
-                </select>
-                <span id="statusError" class="error-message"></span>
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" id="btnSubmitForm" class="btn btn-primary">Publicar vehículo</button>
-                <button type="button" id="btnCancelForm" class="btn btn-secondary">Cancelar</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="deleteModal" class="modal-overlay hidden">
-    <div class="modal-content modal-confirm">
-        <h3>¿Está seguro de que desea eliminar este vehículo?</h3>
-        <p id="deleteTargetText" class="delete-info">Chevrolet Tracker 2026</p>
-
-        <div class="modal-actions">
-            <button id="btnCancelDelete" class="btn btn-secondary">Cancelar</button>
-            <button id="btnConfirmDelete" class="btn btn-danger">Sí, Eliminar</button>
         </div>
     </div>
-</div>
-<script src="app.js"></script>
+
+    <!-- Orden: utilidades -> modelo -> vista -> controlador -->
+    <script src="js/utils/formato.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="js/models/almacenamientoLocal.js"></script>
+    <script src="js/models/vehiculoModelo.js"></script>
+    <script src="js/views/catalogoVista.js"></script>
+    <script src="js/controllers/catalogoControlador.js"></script>
 </body>
 </html>

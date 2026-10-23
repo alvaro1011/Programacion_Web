@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoMarket - Detalles del Vehículo</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header class="navbar">
@@ -16,20 +19,20 @@
 
     <main class="container">
         <div class="details-wrapper">
-            <img id="detailImg" src="" alt="Vehículo" class="details-img">
-            
+            <img id="detailImg" alt="Vehículo" class="details-img hidden">
+
             <div class="details-content">
                 <h2 id="detailTitle">Cargando...</h2>
                 <p><strong>Categoría:</strong> <span id="detailCategory"></span></p>
                 <p><strong>Estado:</strong> <span id="detailStatus"></span></p>
                 <p><strong>Precio:</strong> <span id="detailPrice" class="card-price"></span></p>
-                
+
                 <div class="contact-box">
                     <p><strong>Contacto con el Propietario / Concesionario:</strong></p>
-                    <p id="detailContact" style="font-size: 1.2rem; font-weight: bold; color: var(--primary-color);"></p>
+                    <p id="detailContact" class="contact-number"></p>
                 </div>
 
-                <div class="card-actions" style="margin-top: 1.5rem;">
+                <div class="card-actions card-actions-detail">
                     <a id="btnEditDetail" href="editar.html" class="btn btn-warning">Editar este vehículo</a>
                     <a href="index.html" class="btn btn-secondary">Regresar al Catálogo</a>
                 </div>
@@ -37,6 +40,11 @@
         </div>
     </main>
 
-    <script src="app.js"></script>
+    <script src="js/utils/formato.js"></script>
+    <script src="js/utils/navegacion.js"></script>
+    <script src="js/models/almacenamientoLocal.js"></script>
+    <script src="js/models/vehiculoModelo.js"></script>
+    <script src="js/views/detalleVista.js"></script>
+    <script src="js/controllers/detalleControlador.js"></script>
 </body>
 </html>
